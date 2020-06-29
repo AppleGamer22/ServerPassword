@@ -1,0 +1,11 @@
+name: ServerPassword
+version: 1.0.0-alpha.1
+main: dev.applegamer22.sp.Main
+api-version: 1.15
+load: STARTUP
+commands:
+    password:
+        description: command for password input
+        usage: /password [password]
+        permission: <plugin name>.basic
+        permission-message: You don't have <permission>

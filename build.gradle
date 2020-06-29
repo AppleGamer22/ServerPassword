@@ -1,0 +1,53 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+	}
+}
+plugins {
+	id 'java'
+	id 'idea'
+	id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+	id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+group = 'applegamer22'
+version = '1.0.0-alpha.1'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+idea {
+	module {
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
+repositories {
+	mavenCentral()
+	maven {
+		name = 'spigotmc-repo'
+		url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+	}
+	maven {
+		name = 'sonatype'
+		url = 'https://oss.sonatype.org/content/groups/public/'
+	}
+}
+compileKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+	kotlinOptions.jvmTarget = "1.8"
+}
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'kotlin'
+dependencies {
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72"
+	compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
+	compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+task copyJAR(type: Copy) {
+	from file("$buildDir/libs/ServerPassword-1.0.0-alpha.1-all.jar")
+	into file("$buildDir/../server/plugins")
+}
