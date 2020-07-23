@@ -1,7 +1,7 @@
-name: ServerPassword
+name: sp
 version: 1.0.0-alpha.1
 main: dev.applegamer22.sp.Main
-api-version: 1.15
+api-version: 1.16
 load: STARTUP
 commands:
     password:

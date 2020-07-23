@@ -49,7 +49,7 @@ dependencies {
 	compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 task copyJAR(type: Copy) {
-	from file("$buildDir/libs/ServerPassword-1.0.0-alpha.1-all.jar")
+	from file("$buildDir/libs/sp-1.0.0-alpha.1-all.jar")
 	into file("$buildDir/../server/plugins")
 }
 

@@ -1,2 +1,2 @@
-# ServerPassword
+# sp
 Minecraft server password authentication
