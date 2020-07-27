@@ -1,0 +1,16 @@
+version: "3"
+services:
+  minecraft:
+    container_name: minecraft
+    image: itzg/minecraft-server:1.7.0
+    environment:
+      EULA: "TRUE"
+      TZ: Australia/Melbourne
+      TYPE: PAPER
+      VERSION: 1.16.1
+      PASSWORD: <your_password>
+    ports:
+      - 25565:25565
+    volumes:
+      - ./build/libs/sp-1.0.0-alpha.1-all.jar:/data/plugins/sp-1.0.0-alpha.1-all.jar
+#  docker exec -i minecraft rcon-cli

@@ -15,7 +15,7 @@ public class Main: JavaPlugin() {
 		if (sender is Player && arguments.size == 1) {
 			val name = sender.name
 			val password = arguments[0]
-			if (command.name.toLowerCase() == "password" && password == System.getenv("password")) {
+			if (command.name.toLowerCase() == "password" && password == System.getenv("PASSWORD")) {
 				Bukkit.getPlayer(name)?.sendMessage("Welcome, $name!")
 				sender.player?.isWhitelisted = true
 			} else {
