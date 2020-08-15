@@ -14,7 +14,7 @@ plugins {
 	id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 group = 'applegamer22'
-version = '1.0.0-alpha.2'
+version = '1.0.0-alpha.2.1'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 idea {
@@ -49,7 +49,7 @@ dependencies {
 	compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 task copyJAR(type: Copy) {
-	from file("$buildDir/libs/sp-1.0.0-alpha.1-all.jar")
+	from file("$buildDir/libs/*.jar")
 	into file("$buildDir/../minecraft/plugins")
 }
 
