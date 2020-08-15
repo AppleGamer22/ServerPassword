@@ -20,9 +20,10 @@ jobs:
         id: upload-release-asset
         with:
           upload_url: https://github.com/${GITHUB_REPOSITORY#*/}/sp/releases/download/${GITHUB_REF##*/}/sp-${GITHUB_REF##*/}-all.jar
-          asset_path: ./build/libs/sp-${GITHUB_REF##*/}-all.jar
+          asset_path: .${GITHUB_WORKSPACE}/build/libs/sp-${GITHUB_REF##*/}-all.jar
           asset_name: sp-${GITHUB_REF##*/}-all.jar
           asset_content_type: application/java-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
+          GITHUB_WORKSPACE: ${{ secrets.GITHUB_WORKSPACE }}
