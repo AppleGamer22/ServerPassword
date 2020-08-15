@@ -1,11 +1,14 @@
 name: sp
-version: 1.0.0-alpha.1
+version: 1.0.0-alpha.2
 main: dev.applegamer22.sp.Main
-api-version: 1.16
+api-version: "1.16"
 load: STARTUP
 commands:
     password:
         description: command for password input
         usage: /password [password]
-        permission: <plugin name>.basic
+        permission: sp.password
         permission-message: You don't have <permission>
+permissions:
+    sp.password:
+        default: true

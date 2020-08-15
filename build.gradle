@@ -14,7 +14,7 @@ plugins {
 	id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 group = 'applegamer22'
-version = '1.0.0-alpha.1'
+version = '1.0.0-alpha.2'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 idea {
@@ -50,7 +50,7 @@ dependencies {
 }
 task copyJAR(type: Copy) {
 	from file("$buildDir/libs/sp-1.0.0-alpha.1-all.jar")
-	into file("$buildDir/../server/plugins")
+	into file("$buildDir/../minecraft/plugins")
 }
 
 install {
