@@ -8,15 +8,15 @@ buildscript {
 	}
 }
 plugins {
-	id 'java'
-	id 'idea'
-	id 'org.jetbrains.kotlin.jvm' version '1.4.10'
-	id 'com.github.johnrengelman.shadow' version '5.2.0'
+	id "java"
+	id "idea"
+	id "org.jetbrains.kotlin.jvm" version "1.4.10"
+	id "com.github.johnrengelman.shadow" version "5.2.0"
 }
-group = 'applegamer22'
-version = '1.0.0-alpha.3'
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+group = "applegamer22"
+version = "1.0.0-alpha.3"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 idea {
 	module {
 		downloadJavadoc = true
@@ -26,11 +26,11 @@ idea {
 repositories {
 	mavenCentral()
 	maven {
-		url 'https://papermc.io/repo/repository/maven-public/'
+		url "https://papermc.io/repo/repository/maven-public/"
 	}
 	maven {
-		name = 'sonatype'
-		url = 'https://oss.sonatype.org/content/groups/public/'
+		name = "sonatype"
+		url = "https://oss.sonatype.org/content/groups/public/"
 	}
 }
 compileKotlin {
@@ -44,20 +44,22 @@ apply plugin: "com.github.johnrengelman.shadow"
 apply plugin: "kotlin"
 dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.10"
-	compileOnly 'com.destroystokyo.paper:paper-api:1.16.3-R0.1-SNAPSHOT'
+	compileOnly "com.destroystokyo.paper:paper-api:1.16.3-R0.1-SNAPSHOT"
 	compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
-task copyJAR(type: Copy) {
+task copyJar(type: Copy) {
 	from file("$buildDir/libs/*.jar")
 	into file("$buildDir/../minecraft/plugins")
 }
-
+shadowJar {
+	archiveClassifier.set("")
+}
 install {
 	pom().writeTo("$buildDir/../pom.xml")
 	repositories {
 		mavenInstaller {
-			pom.version = "1.0.0-alpha.3"
-			pom.groupId = "applegamer22"
+			pom.version = "$version"
+			pom.groupId = "$group"
 			pom.artifactId = "sp"
 		}
 	}
