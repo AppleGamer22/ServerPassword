@@ -24,7 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: https://uploads.github.com/repos/${{github.repository_owner}}/sp/releases/${{steps.get_version.outputs.VERSION}}/assets
+          upload_url: ${{github.event.release.upload_url}}
           asset_name: sp-${{ steps.get_version.outputs.VERSION }}.jar
           asset_path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
           asset_content_type: application/java-archive
