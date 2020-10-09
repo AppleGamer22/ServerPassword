@@ -15,9 +15,10 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew shadowJar
+      - run: ls build/libs/
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v2
         with:
           name: sp-${GITHUB_REF##*/}-all.jar
-          path: ./build/libs/sp-${GITHUB_REF##*/}-all.jar
+          path: ${{ github.workspace }}/build/libs/*.jar
           if-no-files-found: error
