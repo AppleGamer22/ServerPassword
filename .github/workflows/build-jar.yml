@@ -20,7 +20,10 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
       - run: ls build/libs/
       - name: Upload Release Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: ./build/libs/sp-${{ steps.get_version.outputs.VERSION }}.jar
-          if-no-files-found: error
+          upload_url: https://uploads.github.com/repos/${{github.repository_owner}}/sp/releases/${{steps.get_version.outputs.VERSION}}/assets?name=sp-${{steps.get_version.outputs.VERSION}}.jar
+          asset_name: sp-${{ steps.get_version.outputs.VERSION }}.jar
+          asset_path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
