@@ -18,13 +18,18 @@ jobs:
       - name: Get version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
-      - run: ls build/libs/
+      - name: Upload Release Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sp-${{steps.get_version.outputs.VERSION}}.jar
+          path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
+          if-no-files-found: error
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{github.event.release.upload_url}}
-          asset_name: sp-${{ steps.get_version.outputs.VERSION }}.jar
+          asset_name: sp-${{steps.get_version.outputs.VERSION}}.jar
           asset_path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
           asset_content_type: application/java-archive
