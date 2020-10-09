@@ -1,5 +1,5 @@
 name: sp
-version: 1.0.0-alpha.3.5.6
+version: 1.0.0-alpha.3.5.7
 main: dev.applegamer22.sp.Main
 api-version: "1.16"
 load: STARTUP

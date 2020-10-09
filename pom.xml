@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>applegamer22</groupId>
   <artifactId>sp</artifactId>
-  <version>1.0.0-alpha.3.5.6</version>
+  <version>1.0.0-alpha.3.5.7</version>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
