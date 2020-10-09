@@ -19,7 +19,7 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
       - run: ls build/libs/
-      - name: Upload Release Artifact
+      - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,3 +27,4 @@ jobs:
           upload_url: https://uploads.github.com/repos/${{github.repository_owner}}/sp/releases/${{steps.get_version.outputs.VERSION}}/assets?name=sp-${{steps.get_version.outputs.VERSION}}.jar
           asset_name: sp-${{ steps.get_version.outputs.VERSION }}.jar
           asset_path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
+          asset_content_type: application/java-archive
