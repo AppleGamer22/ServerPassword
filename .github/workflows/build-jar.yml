@@ -19,6 +19,6 @@ jobs:
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: sp-${GITHUB_REF##*/}-all.jar
+          name: sp-${{ github.ref }}-all.jar
           path: ${{ github.workspace }}/build/libs/*.jar
           if-no-files-found: error
