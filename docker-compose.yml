@@ -13,4 +13,4 @@ services:
             - 25565:25565
         volumes:
             - ./minecraft:/data
-#  docker exec -i minecraft rcon-cli
+# docker exec -i minecraft rcon-cli
