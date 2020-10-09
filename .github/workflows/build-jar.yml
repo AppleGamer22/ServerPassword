@@ -18,9 +18,10 @@ jobs:
       - name: Get version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
+      - run: ls build/libs/
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: sp-${{ steps.get_version.outputs.VERSION }}-all.jar
-          path: ${{ github.workspace }}/build/libs/${{ steps.get_version.outputs.VERSION }}.jar
+#          name: sp-${{ steps.get_version.outputs.VERSION }}-all.jar
+          path: build/libs/${{ steps.get_version.outputs.VERSION }}.jar
           if-no-files-found: error
