@@ -23,5 +23,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
 #          name: sp-${{ steps.get_version.outputs.VERSION }}-all.jar
-          path: build/libs/${{ steps.get_version.outputs.VERSION }}.jar
+          path: ./build/libs/${{ steps.get_version.outputs.VERSION }}.jar
           if-no-files-found: error
