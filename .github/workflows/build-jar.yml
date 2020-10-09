@@ -15,10 +15,12 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew shadowJar
-      - run: ls build/libs/
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v2
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
         with:
-          name: sp-${{ github.ref }}-all.jar
-          path: ${{ github.workspace }}/build/libs/*.jar
+          name: sp-${{ steps.get_version.outputs.VERSION }}-all.jar
+          path: ${{ github.workspace }}/build/libs/${{ steps.get_version.outputs.VERSION }}.jar
           if-no-files-found: error
