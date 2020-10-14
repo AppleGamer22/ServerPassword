@@ -1,12 +1,12 @@
 name: sp
-version: 1.0.0-alpha.3.6
+version: 1.0.0-alpha.4
 main: dev.applegamer22.sp.Main
 api-version: "1.16"
 load: STARTUP
 commands:
-    password:
+    sp:
         description: command for password input
-        usage: /password [password]
+        usage: /sp [password]
         permission: sp.password
         permission-message: You don't have <permission>
 permissions:
