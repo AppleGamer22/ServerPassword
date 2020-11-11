@@ -11,8 +11,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Gradle
-        run: gradle shadowJar
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
       - name: Get version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF##*/}
@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: sp-${{steps.get_version.outputs.VERSION}}.jar
-          path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
+          path: ./target/sp-${{steps.get_version.outputs.VERSION}}.jar
           if-no-files-found: error
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
@@ -29,5 +29,5 @@ jobs:
         with:
           upload_url: ${{github.event.release.upload_url}}
           asset_name: sp-${{steps.get_version.outputs.VERSION}}.jar
-          asset_path: ./build/libs/sp-${{steps.get_version.outputs.VERSION}}.jar
+          asset_path: ./target/sp-${{steps.get_version.outputs.VERSION}}.jar
           asset_content_type: application/java-archive
