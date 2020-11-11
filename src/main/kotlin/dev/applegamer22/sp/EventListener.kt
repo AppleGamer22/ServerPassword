@@ -4,6 +4,7 @@ import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.entity.Player
+import org.bukkit.entity.Monster
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractAtEntityEvent
@@ -15,7 +16,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerPortalEvent
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent
 import org.bukkit.event.player.PlayerDropItemEvent
-import org.bukkit.event.player.PlayerBucketEvent
+//import org.bukkit.event.player.PlayerBucketEvent
 import org.bukkit.event.player.PlayerBedEnterEvent
 import org.bukkit.event.player.PlayerEditBookEvent
 import org.bukkit.event.player.PlayerFishEvent
@@ -27,6 +28,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityTargetEvent
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 class EventListener: Listener {
 	private fun sendMessage(player: Player) {
@@ -37,6 +40,7 @@ class EventListener: Listener {
 	@EventHandler fun onPlayerJoin(event: PlayerJoinEvent) {
 		event.player.isWhitelisted = false
 		this.sendMessage(event.player)
+		event.player.addPotionEffect(PotionEffect(PotionEffectType.BLINDNESS, Int.MAX_VALUE, 1))
 	}
 
 	@EventHandler fun onPlayerQuit(event: PlayerQuitEvent) {
@@ -97,11 +101,11 @@ class EventListener: Listener {
 		}
 	}
 
-	@EventHandler fun onPlayerPlayerBucket(event: PlayerBucketEvent) {
-		if (!event.player.isWhitelisted) {
-			event.isCancelled = true
-		}
-	}
+//	@EventHandler fun onPlayerPlayerBucket(event: PlayerBucketEvent) {
+//		if (!event.player.isWhitelisted) {
+//			event.isCancelled = true
+//		}
+//	}
 
 	@EventHandler fun onPlayerBedEnter(event: PlayerBedEnterEvent) {
 		if (!event.player.isWhitelisted) {
@@ -148,7 +152,7 @@ class EventListener: Listener {
 	@EventHandler fun onEntityDamageByEntity(event: EntityDamageByEntityEvent) {
 		if (event.entity is Player) {
 			val player = event.entity as Player
-			if (player.isWhitelisted) {
+			if (!player.isWhitelisted) {
 				event.isCancelled = true
 			}
 		}
@@ -157,7 +161,7 @@ class EventListener: Listener {
 	@EventHandler fun onEntityDamage(event: EntityDamageEvent) {
 		if (event.entity is Player) {
 			val player = event.entity as Player
-			if (player.isWhitelisted) {
+			if (!player.isWhitelisted) {
 				event.isCancelled = true
 			}
 		}
@@ -166,16 +170,16 @@ class EventListener: Listener {
 	@EventHandler fun onEntityDeath(event: EntityDeathEvent) {
 		if (event.entity is Player) {
 			val player = event.entity as Player
-			if (player.isWhitelisted) {
+			if (!player.isWhitelisted) {
 				event.isCancelled = true
 			}
 		}
 	}
 
 	@EventHandler fun onEntityTarget(event: EntityTargetEvent) {
-		if (event.entity is Player) {
-			val player = event.entity as Player
-			if (player.isWhitelisted) {
+		if (event.target is Player) {
+			val player = event.target as Player
+			if (!player.isWhitelisted) {
 				event.isCancelled = true
 			}
 		}

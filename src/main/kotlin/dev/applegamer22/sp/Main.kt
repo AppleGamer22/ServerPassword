@@ -5,6 +5,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.potion.PotionEffectType
 
 class Main: JavaPlugin() {
 	override fun onEnable() {
@@ -18,6 +19,7 @@ class Main: JavaPlugin() {
 			if (command.name == "sp" && password == System.getenv("PASSWORD")) {
 				Bukkit.getPlayer(name)?.sendMessage("Welcome, $name!")
 				sender.player?.isWhitelisted = true
+				sender.removePotionEffect(PotionEffectType.BLINDNESS)
 			} else {
 				Bukkit.getPlayer(name)?.sendMessage("$name your password is incorrect")
 			}
