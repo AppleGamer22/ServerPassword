@@ -4,11 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<kotlin.version>1.4.10</kotlin.version>
-		<package.version>1.0.0-alpha.5.3</package.version>
 	</properties>
 	<groupId>applegamer22</groupId>
 	<artifactId>sp</artifactId>
-	<version>1.0.0-alpha.5.2</version>
+	<version>1.0.0-alpha.5.4</version>
 	<packaging>jar</packaging>
 	<licenses>
 		<license>
