@@ -2,12 +2,12 @@ version: "3"
 services:
     minecraft:
         container_name: minecraft
-        image: itzg/minecraft-server:1.7.0
+        image: itzg/minecraft-server:2021.1.0
         environment:
             EULA: "TRUE"
             TZ: Australia/Melbourne
             TYPE: PAPER
-            VERSION: 1.16.4
+            VERSION: 1.16.5
             PASSWORD: <your_password>
         ports:
             - 25565:25565

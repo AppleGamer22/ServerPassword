@@ -6,13 +6,13 @@
 	</properties>
 	<groupId>applegamer22</groupId>
 	<artifactId>sp</artifactId>
-	<version>1.0.0-alpha.5.4</version>
+	<version>1.0.0-alpha.5.5</version>
 	<packaging>jar</packaging>
 	<licenses>
 		<license>
 			<name>GPL-3.0-only</name>
-			<distribution>GitHub repository</distribution>
-			<url>https://github.com/AppleGamer22/sp</url>
+			<distribution>GitHub</distribution>
+			<url>https://github.com/AppleGamer22/sp/releases</url>
 		</license>
 	</licenses>
 	<repositories>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.destroystokyo.paper</groupId>
 			<artifactId>paper-api</artifactId>
-			<version>1.16.4-R0.1-SNAPSHOT</version>
+			<version>1.16.5-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
